@@ -1,113 +1,170 @@
- body {
-      font-family: Arial, sans-serif;
-      background: #000;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      min-height: 100vh;
-      margin: 0;
-    }
-    .qr{
-        color:rgb(45, 99, 165);
-        font-size: 25px;
-    }
-    .download{
-        margin-top: 20px;
-    }
-   /* h1 {
-      color: #333;
-      margin-bottom: 20px;
-    }*/
-    .container {
-      background: #fff;
-      padding: 20px;
-      margin: 100px;
-      border-radius: 12px;
-      box-shadow: 0 0 100px #0ef;
-      text-align: center;
-    }
-    input {
-      padding: 12px;
-      width: 250px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
-    }
-    button {
-      padding: 12px 18px;
-      border: none;
-      border-radius: 8px;
-      background: #4CAF50;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #45a049;
-    }
-    #qrcode {
-      margin-top: 20px;
-      margin-left: 115px;
-      margin-right: px;
-    }
-    #removeBtn {
-      display: none;
-      background-color: red;
-    }
-    #removeBtn:hover {
-      background-color: darkred;
-    }
-    #downloadBtn {
-      display: none;
-      background-color: green;
-    }
-    #downloadBtn:hover {
-      background-color: darkgreen;
-    }
-    /* Responsive layout */
+/* General body styling */
+body {
+  font-family: Arial, sans-serif;   /* clean readable font */
+  background: #000;                 /* black background */
+  display: grid;                    /* grid layout */
+  grid-template-columns: 1fr 1fr;   /* 2 equal columns */
+  justify-content: center;          /* center horizontally */
+  align-items: center;              /* center vertically */
+  flex-direction: column;           /* fallback for flex */
+  min-height: 100vh;                /* full screen height */
+  margin: 0;                        /* remove default margin */
+}
+
+/* Sub-heading text for QR Tool */
+.qr {
+  color: rgb(45, 99, 165);
+  font-size: 25px;
+}
+
+/* Container box for main content */
+.container {
+  background: #fff;                 /* white card */
+  padding: 20px;
+  margin: 100px;
+  border-radius: 12px;              /* rounded corners */
+  box-shadow: 0 0 100px #0ef;       /* glowing cyan shadow */
+  text-align: center;
+}
+
+/* Input field styling */
+input {
+  padding: 12px;
+  width: 250px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+/* Buttons (Generate, Scanner, etc.) */
+button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #4CAF50;             /* green background */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;     /* smooth hover effect */
+}
+
+/* Hover effect for all buttons */
+button:hover {
+  background: #45a049;
+}
+
+/* Container for QR code image */
+.rem-down {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Position QR code image properly */
+#qrcode {
+  margin-top: 20px;
+  margin-left: 115px;
+}
+
+/* Remove QR Code button */
+#removeBtn {
+  display: none;                   /* hidden until QR is generated */
+  background-color: red;
+}
+#removeBtn:hover {
+  background-color: darkred;
+}
+
+/* Download QR Code button */
+#downloadBtn {
+  display: none;                   /* hidden until QR is generated */
+  background-color: green;
+}
+#downloadBtn:hover {
+  background-color: darkgreen;
+}
+
+/* ================= Responsive Layout ================= */
+
+/* For tablets and medium devices */
 @media (max-width: 768px) {
   body {
-    grid-template-columns: 1fr; /* stack vertically */
+    grid-template-columns: 1fr;    /* stack items vertically */
   }
 
   .container {
-    margin: 20px auto; /* center with margin */
-    width: 90%;       /* fit better on mobile */
+    margin: 20px auto;             /* reduce margin */
+    width: 90%;                    /* take most width */
   }
 }
 
-/* Extra small screens */
+/* For small screens (phones) */
 @media (max-width: 480px) {
   h1 {
     font-size: 1.2rem;
   }
   input, button {
     font-size: 0.85rem;
-    width: 100%; /* full width on phones */
+    width: 100%;                   /* full width on phones */
   }
 }
-    
-     .welcome {
-       padding-right: 80px;
-      font-size: 28px;
-      font-weight: bold;
-      color: #227c97;
-      border-right: 3px solid #333;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      margin: 0 auto;
-      animation: typing 3s steps(30, end) forwards, blink 0.8s step-end infinite;
-    }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 18ch; } /* adjust based on text length */
-    }
+/* ================= Welcome Text Animation ================= */
+.welcome {
+  padding-right: 80px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #227c97;
+  border-right: 3px solid #333;     /* typing cursor effect */
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;                         /* start hidden for typing effect */
+  margin: 0 auto;
+  animation: typing 3s steps(30, end) forwards; /* typing effect only */
+  border-right: none !important;    /* remove blinking cursor */
+}
 
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
+/* Typing animation effect */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 18ch; } /* adjust width to text length */
+}
+
+/* Cursor blinking effect (disabled by !important above) */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* ================= Scanner Styling ================= */
+#reader {
+  border: 2px solid #4CAF50;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.3);
+}
+#scan-result {
+  font-size: 18px;
+  text-align: center;
+}
+
+/* Common layout for QR and Scanner areas */
+#qrcode, #reader {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Remove/Download buttons (hidden initially) */
+#removeBtn, #downloadBtn, #removeScanBtn {
+  display: none;
+  margin-top: 10px;
+}
+
+/* Common button spacing */
+.btn {
+  margin: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}

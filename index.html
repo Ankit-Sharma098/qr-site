@@ -4,26 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QR Code Generator</title>
+  <!-- External CSS file link for styling -->
   <link rel="StyleSheet" href="style.css">
-  
 </head>
 <body>
-    <div><h1 class="welcome">Welcome to QR Generator </h1>
-</div>
-
+  
+  <!-- Welcome Heading shown at the top of the page -->
+  <h1 class="welcome">Welcome to QR Tool....</h1>
+  
+  <!-- Main container that holds both QR Generator and Scanner features -->
   <div class="container">
-      <h2 class="qr">QR Code Generator </h2>
-    <input type="text" id="text" placeholder="Enter URL or text">
+    
+    <!-- Title inside container -->
+    <h2 class="qr">QR Code Generator & Scanner</h2>
+
+    <!-- Input field where user will type text or URL to generate QR -->
+    <input type="text" id="url" placeholder="Enter URL or text">
     <br>
-    <button onclick="generateQRCode()">Generate QR Code</button>
-     <button id="removeBtn" onclick="removeQRCode()">Remove QR Code</button>  
 
-    <div id="qrcode"></div>
-    <button class="download" id="downloadBtn" onclick="downloadQRCode()">Download QR Code</button>
+    <!-- Button to generate QR code -->
+    <button class="btn" onclick="generateQRCode()">Generate QR Code</button>
+    
+    <!-- Button to open camera and scan QR code -->
+    <button class="btn" onclick="startScanner()">Open Scanner</button>
+
+    <!-- Space where QR Code will be displayed after generation -->
+    <div class="rem-down" id="qrcode"></div>
+    
+    <!-- Button to remove the QR Code (only visible after QR is generated) -->
+    <button class="btn" id="removeBtn" onclick="removeQRCode()">Remove QR Code</button>
+    
+    <!-- Button to download the QR Code as an image -->
+    <button class="btn" id="downloadBtn" onclick="downloadQRCode()">Download QR Code</button>
+
+    <!-- Scanner Area (hidden by default, will show when user clicks 'Open Scanner') -->
+    <div id="reader" style="width:300px; margin:auto; display:none;"></div>
+    
+    <!-- Text area where the scanned result will be shown -->
+    <p id="scan-result" style="margin-top: 15px; font-weight: bold; color: green;"></p>
+    
+    <!-- Button to remove scanner and scan result -->
+    <button class="btn" id="removeScanBtn" onclick="removeScanner()">Remove Scan Result</button>
   </div>
-
-  <!-- QRCode.js Library -->
+  
+  <!-- Importing QR code generation library -->
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  
+  <!-- Importing QR code scanner library -->
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  
+  <!-- External JS file where all functions are written -->
   <script src="fun.js"></script>
 </body>
 </html>
